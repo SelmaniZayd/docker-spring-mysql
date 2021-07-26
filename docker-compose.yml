@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+
+  spring-app:
+    image: my-spring-poject
+    build: ./projet-dev-ops
+    depends_on:
+      - db
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/my_db?autoReconnect=true&useSSL=false
+      - DATABASE_USERNAME=root
+      - DATABASE_PASSWORD=root
+    networks:
+      - my-network
+
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=my_db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=userpassword
+    ports:
+      - 3307:3307
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks: 
+      - my-network
+
+volumes:
+  mysql-data:
+
+networks:
+  my-network:
+    driver: bridge

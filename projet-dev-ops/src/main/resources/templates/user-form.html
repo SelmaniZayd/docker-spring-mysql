@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Welcome</title>
+      <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+   </head>
+   <body>
+      <h1>User form</h1>
+      <form action="#" th:action="@{/users/save}" th:object="${user}" method="POST">
+      	<input type="text" placeholder="first name" th:field="*{firstName}" />
+      	<input type="text" placeholder="last name" th:field="*{lastName}" />
+      	<input type="email" placeholder="email" th:field="*{email}" />
+      	<input type="number" placeholder="age" th:field="*{age}" />
+      	<input type="checkbox" placeholder="bourse" th:field="*{bourse}" />
+      	
+      	<button type="submit">Save</button>
+      </form>
+ 
+   </body>
+    
+</html>
