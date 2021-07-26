@@ -1,4 +1,4 @@
-# For first launch use :
+# Docker Spring Mysql
 - docker-compose up --build -d
 
 * * --build to build the spring app image
